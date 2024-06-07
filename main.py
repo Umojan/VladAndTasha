@@ -47,6 +47,8 @@ class TaskManager:
         - rename_task(old_task, new_task): Переименовывает задачу.
         - clear_all_tasks(): Очищает все задачи.
     """
+
+    
     class HashSet:
     """
         HashSet - это класс, который реализует базовые операции над множествами.
@@ -109,3 +111,42 @@ class TaskManager:
         self.tasks.clear()
         self.completed_tasks.clear()
         print("Теперь список пуст")
+
+
+class HashSet:
+    """
+        HashSet - это класс, который реализует базовые операции над множествами.
+
+        Методы:
+        - add(item): Добавляет элемент item в множество.
+        - remove(item): Удаляет элемент item из множества, если он присутствует.
+        - contains(item): Проверяет, присутствует ли элемент item в множестве.
+        - clear(): Очищает множество.
+        - items(): Возвращает все элементы множества.
+        - __iter__(): Возвращает итератор по элементам множества.
+        - __len__(): Возвращает количество элементов в множестве.
+    """
+    def __init__(self):
+        self.data = {}
+
+    def add(self, item):
+        self.data[item] = True
+
+    def remove(self, item):
+        if item in self.data:
+            del self.data[item]
+
+    def contains(self, item):
+        return item in self.data
+
+    def clear(self):
+        self.data.clear()
+
+    def items(self):
+        return self.data.keys()
+
+    def __iter__(self):
+        return iter(self.data)
+
+    def __len__(self):
+        return len(self.data)
