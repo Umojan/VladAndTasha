@@ -1,16 +1,4 @@
-class TaskManager:
-    """
-        TaskManager - это класс для управления задачами.
-
-        Методы:
-        - add_task(task): Добавляет новую задачу.
-        - remove_task(task): Удаляет задачу.
-        - print_all_tasks(): Выводит все задачи и их статус.
-        - mark_task_as_completed(task): Отмечает задачу как выполненную.
-        - rename_task(old_task, new_task): Переименовывает задачу.
-        - clear_all_tasks(): Очищает все задачи.
-    """
-    class HashSet:
+class HashSet:
     """
         HashSet - это класс, который реализует базовые операции над множествами.
 
@@ -47,7 +35,33 @@ class TaskManager:
 
     def __len__(self):
         return len(self.data)
+class TaskManager:
+    """
+        TaskManager - это класс для управления задачами.
 
+        Методы:
+        - add_task(task): Добавляет новую задачу.
+        - remove_task(task): Удаляет задачу.
+        - print_all_tasks(): Выводит все задачи и их статус.
+        - mark_task_as_completed(task): Отмечает задачу как выполненную.
+        - rename_task(old_task, new_task): Переименовывает задачу.
+        - clear_all_tasks(): Очищает все задачи.
+    """
+    class HashSet:
+    """
+        HashSet - это класс, который реализует базовые операции над множествами.
+
+        Методы:
+        - add(item): Добавляет элемент item в множество.
+        - remove(item): Удаляет элемент item из множества, если он присутствует.
+        - contains(item): Проверяет, присутствует ли элемент item в множестве.
+        - clear(): Очищает множество.
+        - items(): Возвращает все элементы множества.
+        - __iter__(): Возвращает итератор по элементам множества.
+        - __len__(): Возвращает количество элементов в множестве.
+    """
+    def __init__(self):
+     
     def __init__(self):
         self.tasks = HashSet()
         self.completed_tasks = HashSet()
