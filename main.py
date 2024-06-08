@@ -1,40 +1,34 @@
 class HashSet:
-    """
-        HashSet - это класс, который реализует базовые операции над множествами.
-
-        Методы:
-        - add(item): Добавляет элемент item в множество.
-        - remove(item): Удаляет элемент item из множества, если он присутствует.
-        - contains(item): Проверяет, присутствует ли элемент item в множестве.
-        - clear(): Очищает множество.
-        - items(): Возвращает все элементы множества.
-        - __iter__(): Возвращает итератор по элементам множества.
-        - __len__(): Возвращает количество элементов в множестве.
-    """
-    def __init__(self):
+    def __init__(self, iterable=None, comparer=None):
         self.data = {}
+        self.comparer = comparer if comparer else lambda x, y: x == y
+        if iterable:
+            for item in iterable:
+                self.add(item)
 
     def add(self, item):
-        self.data[item] = True
-
-    def remove(self, item):
-        if item in self.data:
-            del self.data[item]
-
-    def contains(self, item):
-        return item in self.data
+        if not self.contains(item):
+            self.data[item] = None
 
     def clear(self):
         self.data.clear()
 
-    def items(self):
-        return self.data.keys()
+    def contains(self, item):
+        for key in self.data:
+            if self.comparer(key, item):
+                return True
+        return False
 
-    def __iter__(self):
-        return iter(self.data)
+    def copy_to(self, array, array_index):
+        for i, item in enumerate(self.data.keys()):
+            array[array_index + i] = item
 
-    def __len__(self):
-        return len(self.data)
+    def remove(self, item):
+        for key in list(self.data.keys()):
+            if self.comparer(key, item):
+                del self.data[key]
+                return True
+        return False
 
 
 class TaskManager:
